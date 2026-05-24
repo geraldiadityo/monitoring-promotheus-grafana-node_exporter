@@ -57,26 +57,38 @@ services:
           cpus: "0.2"
           memory: 128M
 
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
-    container_name: cadvisor
+  snmp-exporter:
+    image: prom/snmp-exporter:latest
+    container_name: snmp-exporter
     restart: unless-stopped
-    privileged: true
     volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /dev/disk/:/dev/disk:ro
+      # Anda membutuhkan file snmp.yml untuk mapping OID Mikrotik
+      - ./snmp/snmp.yml:/etc/snmp_exporter/snmp.yml:ro
     ports:
-      - "8080:8080"
+      - "9116:9116"
     networks:
       - monitoring_net
-    deploy:
-      resources:
-        limits:
-          cpus: "0.3"
-          memory: 256M
+
+  # cadvisor:
+  #   image: gcr.io/cadvisor/cadvisor:latest
+  #   container_name: cadvisor
+  #   restart: unless-stopped
+  #   privileged: true
+  #   volumes:
+  #     - /:/rootfs:ro
+  #     - /var/run:/var/run:ro
+  #     - /sys:/sys:ro
+  #     - /var/lib/docker/:/var/lib/docker:ro
+  #     - /dev/disk/:/dev/disk:ro
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - monitoring_net
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.3"
+  #         memory: 256M
 
   grafana:
     image: grafana/grafana:latest
