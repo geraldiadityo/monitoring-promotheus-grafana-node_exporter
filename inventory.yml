@@ -1,0 +1,8 @@
+all:
+  children:
+    target_servers:
+      hosts:
+        server-lokal:
+          ansible_host: 172.16.2.104
+          ansible_user: sungaipenuh
+          ansible_become_password: "Renahkayuembun"

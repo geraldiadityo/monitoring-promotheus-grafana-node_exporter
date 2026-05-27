@@ -1,0 +1,141 @@
+---
+- name: Instalasi Node Exporter dan Grafana Alloy di Server Lokal
+  hosts: target_servers
+  become: yes
+  vars:
+    node_exporter_version: "1.7.0"
+    monitoring_server_ip: "192.168.10.9"
+
+  tasks:
+    # ==========================================
+    # BAGIAN 1: NODE EXPORTER
+    # ==========================================
+    - name: Membuat grup sistem node_exporter
+      group:
+        name: node_exporter
+        system: yes
+        state: present
+
+    - name: Membuat user sistem node_exporter
+      user:
+        name: node_exporter
+        group: node_exporter
+        system: yes
+        shell: /sbin/nologin
+        create_home: no
+        state: present
+
+    - name: Mengunduh binary Node Exporter
+      get_url:
+        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+        dest: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+
+    - name: Mengekstrak Node Exporter
+      unarchive:
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+        dest: "/tmp"
+        remote_src: yes
+
+    - name: Memindahkan binary Node Exporter ke /usr/local/bin
+      copy:
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
+        dest: "/usr/local/bin/node_exporter"
+        owner: node_exporter
+        group: node_exporter
+        mode: '0755'
+        remote_src: yes
+
+    - name: Membuat file service systemd untuk Node Exporter
+      copy:
+        dest: /etc/systemd/system/node_exporter.service
+        content: |
+          [Unit]
+          Description=Node Exporter
+          After=network.target
+
+          [Service]
+          User=node_exporter
+          Group=node_exporter
+          Type=simple
+          ExecStart=/usr/local/bin/node_exporter
+
+          [Install]
+          WantedBy=multi-user.target
+      notify: restart node_exporter
+
+    # ==========================================
+    # BAGIAN 2: GRAFANA ALLOY
+    # ==========================================
+    - name: Menginstal dependensi untuk repositori HTTPS
+      apt:
+        name:
+          - apt-transport-https
+          - software-properties-common
+          - wget
+          - gpg
+        state: present
+        update_cache: yes
+
+    - name: Memastikan direktori apt keyrings ada
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Mengunduh dan memproses GPG key Grafana (dearmor)
+      shell: "wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor > /etc/apt/keyrings/grafana.gpg"
+      args:
+        creates: /etc/apt/keyrings/grafana.gpg
+
+    - name: Menambahkan repositori APT Grafana
+      apt_repository:
+        repo: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
+        state: present
+        filename: grafana
+        update_cache: yes
+
+    - name: Menginstal Grafana Alloy
+      apt:
+        name: alloy
+        state: present
+
+    - name: Mengonfigurasi config.alloy
+      copy:
+        dest: /etc/alloy/config.alloy
+        content: |
+          local.file_match "server_logs" {
+            path_targets = [
+              {"__path__" = "/var/log/**/*.log", "job" = "varlogs", "host" = "{{ inventory_hostname }}"},
+              {"__path__" = "/var/log/syslog", "job" = "syslog", "host" = "{{ inventory_hostname }}"}
+            ]
+          }
+
+          loki.source.file "log_scraper" {
+            targets    = local.file_match.server_logs.targets
+            forward_to = [loki.write.loki_endpoint.receiver]
+          }
+
+          loki.write "loki_endpoint" {
+            endpoint {
+              url = "http://{{ monitoring_server_ip }}:3100/loki/api/v1/push"
+            }
+          }
+      notify: restart alloy
+
+  # ==========================================
+  # HANDLERS
+  # ==========================================
+  handlers:
+    - name: restart node_exporter
+      systemd:
+        name: node_exporter
+        state: restarted
+        daemon_reload: yes
+        enabled: yes
+
+    - name: restart alloy
+      systemd:
+        name: alloy
+        state: restarted
+        daemon_reload: yes
+        enabled: yes

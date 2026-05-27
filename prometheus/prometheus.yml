@@ -9,9 +9,13 @@ scrape_configs:
       - targets: ['localhost:9090']
 
   # Memonitor Host Server Ubuntu
-  - job_name: 'node-exporter-server-sidinda'
+  - job_name: 'server-diskominfo'
     static_configs:
-      - targets: ['103.144.78.99:9100']
+      # PENTING: Ini adalah IP server Anda
+      - targets: ['172.16.2.104:9100']
+        labels:
+          environment: 'production'
+          server_name: 'server-lokal'
 
   # Memonitor Container Docker
   # - job_name: 'cadvisor'

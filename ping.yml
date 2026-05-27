@@ -1,0 +1,8 @@
+---
+- name: Uji koneksi ke server target
+  hosts: all          # Menargetkan semua server di inventory (bisa diubah ke grup tertentu, misal: node_apps)
+  gather_facts: no    # Diset 'no' agar proses lebih cepat, karena kita tidak butuh memuat data sistem server
+
+  tasks:
+    - name: Mengirim sinyal ping ke server
+      ping:
