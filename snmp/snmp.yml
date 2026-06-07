@@ -14121,284 +14121,6 @@ modules:
       indexes:
       - labelname: dellNetFlashPartitionNumber
         type: gauge
-  dell_rac:
-    walk:
-    - 1.3.6.1.4.1.674.10892.2.4.1
-    - 1.3.6.1.4.1.674.10892.2.4.2
-    metrics:
-    - name: drsChassisIndex
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.1
-      type: gauge
-      help: 0004.0001.0001.0001 This attribute defines the index (one-based) of the
-        associated chassis. - 1.3.6.1.4.1.674.10892.2.4.1.1.1
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-    - name: drsPotentialPower
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.2
-      type: DisplayString
-      help: 0004.0001.0001.0002 This attribute defines the power (in Watts) required
-        by the chassis infrastructure, plus the sum of the maximum power requirements
-        for all currently powered-on servers. - 1.3.6.1.4.1.674.10892.2.4.1.1.2
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsIdlePower
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.3
-      type: DisplayString
-      help: 0004.0001.0001.0003 This attribute defines the power (in Watts) required
-        by the chassis infrastructure, plus the sum of the minimum power requirements
-        for all currently powered-on servers. - 1.3.6.1.4.1.674.10892.2.4.1.1.3
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsMaxPowerSpecification
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.4
-      type: DisplayString
-      help: 0004.0001.0001.0004 This attribute defines the power limit (in Watts)
-        at which server throttling will take place. - 1.3.6.1.4.1.674.10892.2.4.1.1.4
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsPowerSurplus
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.5
-      type: DisplayString
-      help: 0004.0001.0001.0005 This attribute defines the power surplus (in Watts)
-        remaining above the drsPotentialPower reading. - 1.3.6.1.4.1.674.10892.2.4.1.1.5
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsKWhCumulative
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.6
-      type: DisplayString
-      help: 0004.0001.0001.0006 This attribute defines the cumulative chassis power
-        usage (in KWh) since last reset. - 1.3.6.1.4.1.674.10892.2.4.1.1.6
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsKWhCumulativeTime
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.7
-      type: DisplayString
-      help: 0004.0001.0001.0007 This attribute defines the timestamp of the most recent
-        chassis power accumulator reset. - 1.3.6.1.4.1.674.10892.2.4.1.1.7
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsWattsPeakUsage
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.8
-      type: DisplayString
-      help: 0004.0001.0001.0008 This attribute defines the chassis peak power usage
-        (in Watts) since last reset. - 1.3.6.1.4.1.674.10892.2.4.1.1.8
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsWattsPeakTime
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.9
-      type: DisplayString
-      help: 0004.0001.0001.0009 This attribute defines the timestamp of the most recent
-        chassis peak power usage. - 1.3.6.1.4.1.674.10892.2.4.1.1.9
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsWattsMinUsage
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.10
-      type: DisplayString
-      help: 0004.0001.0001.0010 This attribute defines the chassis mimimum power usage
-        (in Watts) since last reset. - 1.3.6.1.4.1.674.10892.2.4.1.1.10
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsWattsMinTime
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.11
-      type: DisplayString
-      help: 0004.0001.0001.0011 This attribute defines the timestamp of the most recent
-        chassis minimum power usage. - 1.3.6.1.4.1.674.10892.2.4.1.1.11
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsWattsResetTime
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.12
-      type: DisplayString
-      help: 0004.0001.0001.0012 This attribute defines the timestamp of the most recent
-        reset of the chassis min/peak Watts readings. - 1.3.6.1.4.1.674.10892.2.4.1.1.12
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsWattsReading
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.13
-      type: DisplayString
-      help: 0004.0001.0001.0013 This attribute defines the instantaneous chassis power
-        usage (in Watts). - 1.3.6.1.4.1.674.10892.2.4.1.1.13
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsAmpsReading
-      oid: 1.3.6.1.4.1.674.10892.2.4.1.1.14
-      type: DisplayString
-      help: 0004.0001.0001.0014 This attribute defines the instantaneous chassis current
-        usage (in Watts). - 1.3.6.1.4.1.674.10892.2.4.1.1.14
-      indexes:
-      - labelname: drsChassisIndex
-        type: gauge
-        fixed_size: 1
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsPSUChassisIndex
-      oid: 1.3.6.1.4.1.674.10892.2.4.2.1.1
-      type: gauge
-      help: 0004.0002.0001.0001 This attribute defines the index (one-based) of the
-        associated chassis. - 1.3.6.1.4.1.674.10892.2.4.2.1.1
-      indexes:
-      - labelname: drsPSUChassisIndex
-        type: gauge
-        fixed_size: 1
-      - labelname: drsPSUIndex
-        type: gauge
-    - name: drsPSUIndex
-      oid: 1.3.6.1.4.1.674.10892.2.4.2.1.2
-      type: gauge
-      help: 0004.0002.0001.0002 This attribute defines the index (one-based) of the
-        associated CMC PSU. - 1.3.6.1.4.1.674.10892.2.4.2.1.2
-      indexes:
-      - labelname: drsPSUChassisIndex
-        type: gauge
-        fixed_size: 1
-      - labelname: drsPSUIndex
-        type: gauge
-    - name: drsPSULocation
-      oid: 1.3.6.1.4.1.674.10892.2.4.2.1.3
-      type: DisplayString
-      help: 0004.0002.0001.0003 This attribute defines the location of the CMC PSU.
-        - 1.3.6.1.4.1.674.10892.2.4.2.1.3
-      indexes:
-      - labelname: drsPSUChassisIndex
-        type: gauge
-        fixed_size: 1
-      - labelname: drsPSUIndex
-        type: gauge
-    - name: drsPSUMonitoringCapable
-      oid: 1.3.6.1.4.1.674.10892.2.4.2.1.4
-      type: gauge
-      help: 0004.0002.0001.0004 This attribute defines the PSU Monitoring capabilities,
-        or the absence of a PSU in this location. - 1.3.6.1.4.1.674.10892.2.4.2.1.4
-      indexes:
-      - labelname: drsPSUChassisIndex
-        type: gauge
-        fixed_size: 1
-      - labelname: drsPSUIndex
-        type: gauge
-      enum_values:
-        1: absent
-        2: none
-        3: basic
-    - name: drsPSUVoltsReading
-      oid: 1.3.6.1.4.1.674.10892.2.4.2.1.5
-      type: DisplayString
-      help: 0004.0002.0001.0005 This attribute defines the instantaneous PSU Voltage
-        reading. - 1.3.6.1.4.1.674.10892.2.4.2.1.5
-      indexes:
-      - labelname: drsPSUChassisIndex
-        type: gauge
-        fixed_size: 1
-      - labelname: drsPSUIndex
-        type: gauge
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsPSUAmpsReading
-      oid: 1.3.6.1.4.1.674.10892.2.4.2.1.6
-      type: DisplayString
-      help: 0004.0002.0001.0006 This attribute defines the instantaneous PSU Current
-        reading. - 1.3.6.1.4.1.674.10892.2.4.2.1.6
-      indexes:
-      - labelname: drsPSUChassisIndex
-        type: gauge
-        fixed_size: 1
-      - labelname: drsPSUIndex
-        type: gauge
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
-    - name: drsPSUWattsReading
-      oid: 1.3.6.1.4.1.674.10892.2.4.2.1.7
-      type: DisplayString
-      help: 0004.0002.0001.0007 This attribute defines the instantaneous PSU Wattage
-        reading. - 1.3.6.1.4.1.674.10892.2.4.2.1.7
-      indexes:
-      - labelname: drsPSUChassisIndex
-        type: gauge
-        fixed_size: 1
-      - labelname: drsPSUIndex
-        type: gauge
-      regex_extracts:
-        "":
-        - value: $1
-          regex: ^(?:(.*))$
   dlink:
     walk:
     - 1.3.6.1.4.1.171.12.1.1.6
@@ -23115,11 +22837,6 @@ modules:
         301: omni
         302: roe
         303: p2pOverLan
-        304: docsCableScte25d1FwdOob
-        305: docsCableScte25d1RetOob
-        306: docsCableScte25d2MacOob
-        307: lora
-        308: lorawan
     - name: ifMtu
       oid: 1.3.6.1.2.1.2.2.1.4
       type: gauge
@@ -31696,10 +31413,6 @@ modules:
       oid: 1.3.6.1.4.1.14988.1.1.13.12
       type: gauge
       help: Signal-to-Interference-plus-Noise Ratio - 1.3.6.1.4.1.14988.1.1.13.12
-    - name: mtxrWirelessModemPinStatus
-      oid: 1.3.6.1.4.1.14988.1.1.13.13
-      type: DisplayString
-      help: Pin status of the modem - 1.3.6.1.4.1.14988.1.1.13.13
     - name: mtxrInterfaceStatsIndex
       oid: 1.3.6.1.4.1.14988.1.1.14.1.1.1
       type: gauge
@@ -32801,206 +32514,6 @@ modules:
       indexes:
       - labelname: mtxrLTEModemInterfaceIndex
         type: gauge
-    - name: mtxrLTEModemPrimaryBand
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.15
-      type: DisplayString
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.15'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemSessionUptime
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.16
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.16'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemRegStatus
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.17
-      type: DisplayString
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.17'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemPinStatus
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.18
-      type: DisplayString
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.18'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemModel
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.19
-      type: DisplayString
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.19'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemFirmware
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.20
-      type: DisplayString
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.20'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemCQI
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.21
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.21'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemNrRSRP
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.22
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.22'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemNrRSRQ
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.23
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.23'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemNrSINR
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.24
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.24'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTEModemSignalRSRQD10
-      oid: 1.3.6.1.4.1.14988.1.1.16.1.1.25
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.1.1.25'
-      indexes:
-      - labelname: mtxrLTEModemInterfaceIndex
-        type: gauge
-    - name: mtxrLTECarrierAggInterfaceIndex
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.1
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.2.1.1.1'
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggIndex
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.2
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.2.1.1.2'
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggBand
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.3
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.2.1.1.3'
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggEARFCN
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.4
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.2.1.1.4'
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggBandwidth
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.5
-      type: gauge
-      help: MHz - 1.3.6.1.4.1.14988.1.1.16.2.1.1.5
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggPhyCellId
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.6
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.2.1.1.6'
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggRSSI
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.7
-      type: gauge
-      help: dBm - 1.3.6.1.4.1.14988.1.1.16.2.1.1.7
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggRSRP
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.8
-      type: gauge
-      help: dBm - 1.3.6.1.4.1.14988.1.1.16.2.1.1.8
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggRSRQ
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.9
-      type: gauge
-      help: dB - 1.3.6.1.4.1.14988.1.1.16.2.1.1.9
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggSINR
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.10
-      type: gauge
-      help: dB - 1.3.6.1.4.1.14988.1.1.16.2.1.1.10
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggSNR
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.11
-      type: gauge
-      help: dB - 1.3.6.1.4.1.14988.1.1.16.2.1.1.11
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-    - name: mtxrLTECarrierAggNR
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.12
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.2.1.1.12'
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-      enum_values:
-        1: "true"
-        2: "false"
-    - name: mtxrLTECarrierAggUplink
-      oid: 1.3.6.1.4.1.14988.1.1.16.2.1.1.13
-      type: gauge
-      help: ' - 1.3.6.1.4.1.14988.1.1.16.2.1.1.13'
-      indexes:
-      - labelname: mtxrLTECarrierAggInterfaceIndex
-        type: gauge
-      - labelname: mtxrLTECarrierAggIndex
-        type: gauge
-      enum_values:
-        1: "true"
-        2: "false"
     - name: mtxrPartitionIndex
       oid: 1.3.6.1.4.1.14988.1.1.17.1.1.1
       type: gauge
@@ -34035,18 +33548,6 @@ modules:
         type: DisplayString
       - labels: []
         labelname: mtxrWifiInterfacesId
-    - name: mtxrCtTotalEntries
-      oid: 1.3.6.1.4.1.14988.1.1.22.1
-      type: counter
-      help: Total number of connections - 1.3.6.1.4.1.14988.1.1.22.1
-    - name: mtxrCtIP4Entries
-      oid: 1.3.6.1.4.1.14988.1.1.22.2
-      type: counter
-      help: Total number of ipv4 connections - 1.3.6.1.4.1.14988.1.1.22.2
-    - name: mtxrCtIP6Entries
-      oid: 1.3.6.1.4.1.14988.1.1.22.3
-      type: counter
-      help: Total number of ipv6 connections - 1.3.6.1.4.1.14988.1.1.22.3
   nec_ix:
     walk:
     - 1.3.6.1.2.1.2.2.1.2
@@ -53098,7 +52599,6 @@ modules:
     walk:
     - 1.3.6.1.4.1.1718.3.2.2
     - 1.3.6.1.4.1.1718.3.2.3
-    - 1.3.6.1.4.1.1718.3.2.7
     metrics:
     - name: infeedIndex
       oid: 1.3.6.1.4.1.1718.3.2.2.1.1
@@ -53109,19 +52609,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedID
       oid: 1.3.6.1.4.1.1718.3.2.2.1.2
       type: DisplayString
@@ -53131,19 +52618,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedName
       oid: 1.3.6.1.4.1.1718.3.2.2.1.3
       type: DisplayString
@@ -53153,19 +52627,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedCapabilities
       oid: 1.3.6.1.4.1.1718.3.2.2.1.4
       type: Bits
@@ -53175,19 +52636,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
       enum_values:
         0: onSense
         1: loadSense
@@ -53207,19 +52655,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
       enum_values:
         0: "off"
         1: "on"
@@ -53240,19 +52675,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
       enum_values:
         0: normal
         1: notOn
@@ -53271,19 +52693,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedLoadHighThresh
       oid: 1.3.6.1.4.1.1718.3.2.2.1.8
       type: gauge
@@ -53293,19 +52702,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedOutletCount
       oid: 1.3.6.1.4.1.1718.3.2.2.1.9
       type: gauge
@@ -53316,19 +52712,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedCapacity
       oid: 1.3.6.1.4.1.1718.3.2.2.1.10
       type: gauge
@@ -53338,19 +52721,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedVoltage
       oid: 1.3.6.1.4.1.1718.3.2.2.1.11
       type: gauge
@@ -53360,19 +52730,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedPower
       oid: 1.3.6.1.4.1.1718.3.2.2.1.12
       type: gauge
@@ -53382,19 +52739,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedApparentPower
       oid: 1.3.6.1.4.1.1718.3.2.2.1.13
       type: gauge
@@ -53404,19 +52748,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedPowerFactor
       oid: 1.3.6.1.4.1.1718.3.2.2.1.14
       type: gauge
@@ -53426,19 +52757,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedCrestFactor
       oid: 1.3.6.1.4.1.1718.3.2.2.1.15
       type: gauge
@@ -53448,19 +52766,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedEnergy
       oid: 1.3.6.1.4.1.1718.3.2.2.1.16
       type: gauge
@@ -53470,19 +52775,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedReactance
       oid: 1.3.6.1.4.1.1718.3.2.2.1.17
       type: gauge
@@ -53493,19 +52785,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
       enum_values:
         0: unknown
         1: capacitive
@@ -53520,19 +52799,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedPhaseCurrent
       oid: 1.3.6.1.4.1.1718.3.2.2.1.19
       type: gauge
@@ -53542,19 +52808,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedLineID
       oid: 1.3.6.1.4.1.1718.3.2.2.1.21
       type: DisplayString
@@ -53564,19 +52817,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedLineToLineID
       oid: 1.3.6.1.4.1.1718.3.2.2.1.22
       type: DisplayString
@@ -53586,19 +52826,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedPhaseID
       oid: 1.3.6.1.4.1.1718.3.2.2.1.23
       type: DisplayString
@@ -53608,19 +52835,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: infeedVACapacity
       oid: 1.3.6.1.4.1.1718.3.2.2.1.24
       type: gauge
@@ -53630,19 +52844,6 @@ modules:
         type: gauge
       - labelname: infeedIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
     - name: outletIndex
       oid: 1.3.6.1.4.1.1718.3.2.3.1.1
       type: gauge
@@ -53654,33 +52855,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletID
       oid: 1.3.6.1.4.1.1718.3.2.3.1.2
       type: DisplayString
@@ -53692,33 +52866,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletName
       oid: 1.3.6.1.4.1.1718.3.2.3.1.3
       type: DisplayString
@@ -53730,33 +52877,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletCapabilities
       oid: 1.3.6.1.4.1.1718.3.2.3.1.4
       type: Bits
@@ -53768,33 +52888,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
       enum_values:
         0: onSense
         1: loadSense
@@ -53816,33 +52909,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
       enum_values:
         0: "off"
         1: "on"
@@ -53865,33 +52931,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
       enum_values:
         0: normal
         1: notOn
@@ -53912,33 +52951,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletLoadLowThresh
       oid: 1.3.6.1.4.1.1718.3.2.3.1.8
       type: gauge
@@ -53950,33 +52962,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletLoadHighThresh
       oid: 1.3.6.1.4.1.1718.3.2.3.1.9
       type: gauge
@@ -53988,33 +52973,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletControlState
       oid: 1.3.6.1.4.1.1718.3.2.3.1.10
       type: gauge
@@ -54026,33 +52984,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
       enum_values:
         0: idleOff
         1: idleOn
@@ -54083,33 +53014,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
       enum_values:
         0: none
         1: "on"
@@ -54126,33 +53030,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletVoltage
       oid: 1.3.6.1.4.1.1718.3.2.3.1.13
       type: gauge
@@ -54164,33 +53041,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletPower
       oid: 1.3.6.1.4.1.1718.3.2.3.1.14
       type: gauge
@@ -54202,33 +53052,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletApparentPower
       oid: 1.3.6.1.4.1.1718.3.2.3.1.15
       type: gauge
@@ -54241,33 +53064,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletPowerFactor
       oid: 1.3.6.1.4.1.1718.3.2.3.1.16
       type: gauge
@@ -54279,33 +53075,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletCrestFactor
       oid: 1.3.6.1.4.1.1718.3.2.3.1.17
       type: gauge
@@ -54318,33 +53087,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletEnergy
       oid: 1.3.6.1.4.1.1718.3.2.3.1.18
       type: gauge
@@ -54356,33 +53098,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
     - name: outletWakeupState
       oid: 1.3.6.1.4.1.1718.3.2.3.1.19
       type: gauge
@@ -54394,33 +53109,6 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
       enum_values:
         1: last
         2: "off"
@@ -54436,417 +53124,19 @@ modules:
         type: gauge
       - labelname: outletIndex
         type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletID
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - outletIndex
-        labelname: outletName
-        oid: 1.3.6.1.4.1.1718.3.2.3.1.3
-        type: DisplayString
-    - name: branchIndex
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.1
-      type: gauge
-      help: Index for the branch table. - 1.3.6.1.4.1.1718.3.2.7.1.1
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-    - name: branchID
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-      type: DisplayString
-      help: The ID of the branch. - 1.3.6.1.4.1.1718.3.2.7.1.2
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-    - name: branchName
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-      type: DisplayString
-      help: The name of the branch. - 1.3.6.1.4.1.1718.3.2.7.1.3
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-    - name: branchCapabilities
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.4
-      type: Bits
-      help: The capabilities of the branch. - 1.3.6.1.4.1.1718.3.2.7.1.4
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-      enum_values:
-        0: onSense
-        1: loadSense
-    - name: branchStatus
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.5
-      type: gauge
-      help: The status of the branch. - 1.3.6.1.4.1.1718.3.2.7.1.5
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-      enum_values:
-        0: "off"
-        1: "on"
-        2: offWait
-        3: onWait
-        4: offError
-        5: onError
-        6: noComm
-        7: reading
-        8: offFuse
-        9: onFuse
-    - name: branchLoadStatus
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.6
-      type: gauge
-      help: The status of the load measured on the branch. - 1.3.6.1.4.1.1718.3.2.7.1.6
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-      enum_values:
-        0: normal
-        1: notOn
-        2: reading
-        3: loadLow
-        4: loadHigh
-        5: overLoad
-        6: readError
-        7: noComm
-    - name: branchLoadValue
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.7
-      type: gauge
-      help: The load measured on the branch - 1.3.6.1.4.1.1718.3.2.7.1.7
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-    - name: branchLoadHighThresh
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.8
-      type: gauge
-      help: The load high threshold value of the branch in Amps. - 1.3.6.1.4.1.1718.3.2.7.1.8
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
-    - name: branchCapacity
-      oid: 1.3.6.1.4.1.1718.3.2.7.1.9
-      type: gauge
-      help: The load capacity of the branch - 1.3.6.1.4.1.1718.3.2.7.1.9
-      indexes:
-      - labelname: towerIndex
-        type: gauge
-      - labelname: infeedIndex
-        type: gauge
-      - labelname: branchIndex
-        type: gauge
-      lookups:
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedID
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        labelname: infeedName
-        oid: 1.3.6.1.4.1.1718.3.2.2.1.3
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchID
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.2
-        type: DisplayString
-      - labels:
-        - towerIndex
-        - infeedIndex
-        - branchIndex
-        labelname: branchName
-        oid: 1.3.6.1.4.1.1718.3.2.7.1.3
-        type: DisplayString
     max_repetitions: 4
   servertech_sentry4:
     walk:
-    - 1.3.6.1.4.1.1718.4.1.14.2.1.2
-    - 1.3.6.1.4.1.1718.4.1.14.2.1.3
     - 1.3.6.1.4.1.1718.4.1.14.3
-    - 1.3.6.1.4.1.1718.4.1.3.2.1.2
+    - 1.3.6.1.4.1.1718.4.1.2.2.1.3
     - 1.3.6.1.4.1.1718.4.1.3.2.1.3
     - 1.3.6.1.4.1.1718.4.1.3.3
-    - 1.3.6.1.4.1.1718.4.1.4.2.1.2
     - 1.3.6.1.4.1.1718.4.1.4.2.1.4
     - 1.3.6.1.4.1.1718.4.1.4.3
-    - 1.3.6.1.4.1.1718.4.1.5.2.1.2
     - 1.3.6.1.4.1.1718.4.1.5.2.1.4
     - 1.3.6.1.4.1.1718.4.1.5.3
-    - 1.3.6.1.4.1.1718.4.1.7.2.1.2
     - 1.3.6.1.4.1.1718.4.1.7.2.1.4
     - 1.3.6.1.4.1.1718.4.1.7.3
-    - 1.3.6.1.4.1.1718.4.1.8.2.1.2
     - 1.3.6.1.4.1.1718.4.1.8.2.1.3
     - 1.3.6.1.4.1.1718.4.1.8.3
     - 1.3.6.1.4.1.1718.4.1.9.3
@@ -54863,15 +53153,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4FanSensorIndex
-        labelname: st4FanSensorID
-        oid: 1.3.6.1.4.1.1718.4.1.14.2.1.2
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4FanSensorIndex
-        labelname: st4FanSensorName
-        oid: 1.3.6.1.4.1.1718.4.1.14.2.1.3
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
     - name: st4FanSensorStatus
       oid: 1.3.6.1.4.1.1718.4.1.14.3.1.2
@@ -54885,15 +53168,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4FanSensorIndex
-        labelname: st4FanSensorID
-        oid: 1.3.6.1.4.1.1718.4.1.14.2.1.2
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4FanSensorIndex
-        labelname: st4FanSensorName
-        oid: 1.3.6.1.4.1.1718.4.1.14.2.1.3
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       enum_values:
         0: normal
@@ -54930,9 +53206,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -54960,9 +53235,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55009,9 +53283,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55035,9 +53308,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55084,9 +53356,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55110,9 +53381,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55159,9 +53429,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55185,9 +53454,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55211,9 +53479,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55261,9 +53528,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55287,9 +53553,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55314,9 +53579,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55341,9 +53605,8 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55392,22 +53655,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4LineIndex
-        labelname: st4LineID
-        oid: 1.3.6.1.4.1.1718.4.1.4.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55420,6 +53675,12 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4UnitIndex
+      - labels: []
+        labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4LineIndex
       enum_values:
         0: unknown
         1: "on"
@@ -55438,22 +53699,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4LineIndex
-        labelname: st4LineID
-        oid: 1.3.6.1.4.1.1718.4.1.4.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55466,6 +53719,12 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4UnitIndex
+      - labels: []
+        labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4LineIndex
       enum_values:
         0: normal
         1: disabled
@@ -55503,22 +53762,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4LineIndex
-        labelname: st4LineID
-        oid: 1.3.6.1.4.1.1718.4.1.4.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55531,6 +53782,12 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4UnitIndex
+      - labels: []
+        labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4LineIndex
     - name: st4LineCurrentStatus
       oid: 1.3.6.1.4.1.1718.4.1.4.3.1.4
       type: gauge
@@ -55545,22 +53802,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4LineIndex
-        labelname: st4LineID
-        oid: 1.3.6.1.4.1.1718.4.1.4.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55573,6 +53822,12 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4UnitIndex
+      - labels: []
+        labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4LineIndex
       enum_values:
         0: normal
         1: disabled
@@ -55610,22 +53865,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4LineIndex
-        labelname: st4LineID
-        oid: 1.3.6.1.4.1.1718.4.1.4.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55638,6 +53885,12 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4UnitIndex
+      - labels: []
+        labelname: st4InputCordIndex
+      - labels: []
+        labelname: st4LineIndex
     - name: st4PhaseState
       oid: 1.3.6.1.4.1.1718.4.1.5.3.1.1
       type: gauge
@@ -55652,22 +53905,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55680,12 +53925,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -55710,22 +53949,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55738,12 +53969,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -55787,22 +54012,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55815,12 +54032,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -55841,22 +54052,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55869,12 +54072,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -55919,22 +54116,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -55947,12 +54136,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -55973,22 +54156,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56001,12 +54176,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56028,22 +54197,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56056,12 +54217,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56082,22 +54237,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56110,12 +54257,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56136,22 +54277,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56164,12 +54297,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56190,22 +54317,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56218,12 +54337,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56244,22 +54357,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56272,12 +54377,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56321,22 +54420,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56349,12 +54440,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56381,22 +54466,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4PhaseIndex
-        labelname: st4PhaseID
-        oid: 1.3.6.1.4.1.1718.4.1.5.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56409,12 +54486,6 @@ modules:
         labelname: st4UnitIndex
       - labels: []
         labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4UnitIndex
-      - labels: []
-        labelname: st4InputCordIndex
-      - labels: []
-        labelname: st4PhaseIndex
       - labels: []
         labelname: st4UnitIndex
       - labels: []
@@ -56435,22 +54506,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4BranchIndex
-        labelname: st4BranchID
-        oid: 1.3.6.1.4.1.1718.4.1.7.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56487,22 +54550,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4BranchIndex
-        labelname: st4BranchID
-        oid: 1.3.6.1.4.1.1718.4.1.7.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56558,22 +54613,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4BranchIndex
-        labelname: st4BranchID
-        oid: 1.3.6.1.4.1.1718.4.1.7.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56606,22 +54653,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4BranchIndex
-        labelname: st4BranchID
-        oid: 1.3.6.1.4.1.1718.4.1.7.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56677,22 +54716,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4BranchIndex
-        labelname: st4BranchID
-        oid: 1.3.6.1.4.1.1718.4.1.7.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56725,22 +54756,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56777,22 +54800,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56848,22 +54863,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56896,22 +54903,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -56967,22 +54966,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57015,22 +55006,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57063,22 +55046,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57111,22 +55086,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57182,22 +55149,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57230,22 +55189,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57278,22 +55229,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57349,22 +55292,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57397,22 +55332,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57451,22 +55378,14 @@ modules:
       lookups:
       - labels:
         - st4UnitIndex
-        - st4InputCordIndex
-        labelname: st4InputCordID
-        oid: 1.3.6.1.4.1.1718.4.1.3.2.1.2
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
         type: DisplayString
       - labels:
         - st4UnitIndex
         - st4InputCordIndex
         labelname: st4InputCordName
         oid: 1.3.6.1.4.1.1718.4.1.3.2.1.3
-        type: DisplayString
-      - labels:
-        - st4UnitIndex
-        - st4InputCordIndex
-        - st4OutletIndex
-        labelname: st4OutletID
-        oid: 1.3.6.1.4.1.1718.4.1.8.2.1.2
         type: DisplayString
       - labels:
         - st4UnitIndex
@@ -57495,6 +55414,12 @@ modules:
         type: gauge
       - labelname: st4TempSensorIndex
         type: gauge
+      lookups:
+      - labels:
+        - st4UnitIndex
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
+        type: DisplayString
       scale: 0.1
     - name: st4TempSensorStatus
       oid: 1.3.6.1.4.1.1718.4.1.9.3.1.2
@@ -57505,6 +55430,12 @@ modules:
         type: gauge
       - labelname: st4TempSensorIndex
         type: gauge
+      lookups:
+      - labels:
+        - st4UnitIndex
+        labelname: st4UnitName
+        oid: 1.3.6.1.4.1.1718.4.1.2.2.1.3
+        type: DisplayString
       enum_values:
         0: normal
         1: disabled
@@ -58692,12 +56623,12 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskID
       oid: 1.3.6.1.4.1.6574.2.1.1.2
-      type: DisplayString
+      type: OctetString
       help: Synology disk ID The ID of disk is assigned by disk Station. - 1.3.6.1.4.1.6574.2.1.1.2
       indexes:
       - labelname: diskIndex
@@ -58707,7 +56638,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskModel
@@ -58722,7 +56653,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskType
@@ -58738,7 +56669,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskStatus
@@ -58754,7 +56685,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskTemperature
@@ -58770,12 +56701,12 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskRole
       oid: 1.3.6.1.4.1.6574.2.1.1.7
-      type: DisplayString
+      type: OctetString
       help: Synology disk role The role of the disk in system - 1.3.6.1.4.1.6574.2.1.1.7
       indexes:
       - labelname: diskIndex
@@ -58785,7 +56716,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskRetry
@@ -58801,7 +56732,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskBadSector
@@ -58817,7 +56748,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskIdentifyFail
@@ -58833,7 +56764,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskRemainLife
@@ -58848,12 +56779,12 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskName
       oid: 1.3.6.1.4.1.6574.2.1.1.12
-      type: DisplayString
+      type: OctetString
       help: Synology disk name The name of disk which align to storage manager. -
         1.3.6.1.4.1.6574.2.1.1.12
       indexes:
@@ -58864,7 +56795,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: diskHealthStatus
@@ -58880,7 +56811,7 @@ modules:
         - diskIndex
         labelname: diskID
         oid: 1.3.6.1.4.1.6574.2.1.1.2
-        type: DisplayString
+        type: OctetString
       - labels: []
         labelname: diskIndex
     - name: raidIndex
@@ -59527,13 +57458,6 @@ modules:
       oid: 1.3.6.1.4.1.6574.5.1.1.9
       type: DisplayString
       help: SMART attribute status - 1.3.6.1.4.1.6574.5.1.1.9
-      indexes:
-      - labelname: diskSMARTInfoIndex
-        type: gauge
-    - name: diskSMARTAttrRaw64
-      oid: 1.3.6.1.4.1.6574.5.1.1.10
-      type: counter
-      help: SMART attribute raw value with 64-bit capacity - 1.3.6.1.4.1.6574.5.1.1.10
       indexes:
       - labelname: diskSMARTInfoIndex
         type: gauge

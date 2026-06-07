@@ -12,7 +12,7 @@ scrape_configs:
   - job_name: 'server-diskominfo'
     static_configs:
       # PENTING: Ini adalah IP server Anda
-      - targets: ['192.168.0.10:9100']
+      - targets: ['192.168.10.10:9100']
         labels:
           environment: 'production'
           server_name: 'server-lokal'
@@ -22,22 +22,22 @@ scrape_configs:
   #   static_configs:
   #     - targets: ['cadvisor:8080']
 
-  # - job_name: 'mikrotik'
-  #   scrape_timeout: 30s # Tambahkan baris ini
-  #   scrape_interval: 30s
-  #   static_configs:
-  #     - targets:
-  #       # Ganti dengan IP Address router Mikrotik Anda
-  #       - 172.16.2.1
-  #   metrics_path: /snmp
-  #   params:
-  #     # Tergantung isi file snmp.yml Anda, modul default biasanya 'if_mib' atau 'mikrotik'
-  #     module: [mikrotik] 
-  #   relabel_configs:
-  #     - source_labels: [__address__]
-  #       target_label: __param_target
-  #     - source_labels: [__param_target]
-  #       target_label: instance
-  #     - target_label: __address__
-  #       # Mengarahkan request prometheus ke container snmp-exporter (berjalan di lokal)
-  #       replacement: snmp-exporter:9116
+  - job_name: 'mikrotik'
+    scrape_timeout: 30s # Tambahkan baris ini
+    scrape_interval: 30s
+    static_configs:
+      - targets:
+        # Ganti dengan IP Address router Mikrotik Anda
+        - 192.168.10.1
+    metrics_path: /snmp
+    params:
+      # Tergantung isi file snmp.yml Anda, modul default biasanya 'if_mib' atau 'mikrotik'
+      module: [mikrotik] 
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        # Mengarahkan request prometheus ke container snmp-exporter (berjalan di lokal)
+        replacement: snmp-exporter:9116
