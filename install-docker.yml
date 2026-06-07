@@ -1,0 +1,56 @@
+---
+- name: Instalasi Docker dan Konfigurasi Akses Tanpa Sudo
+  hosts: target_servers
+  become: yes
+  tasks:
+    - name: Install paket dependencies untuk Docker
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - gnupg
+        state: present
+        update_cache: yes
+
+    - name: Menambahkan GPG key resmi Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Menambahkan repositori Docker ke APT sources
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+        state: present
+        filename: docker
+
+    - name: Install Docker CE (Community Edition)
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+        state: latest
+        update_cache: yes
+
+    - name: Memastikan service Docker berjalan dan enabled saat boot
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Memastikan grup 'docker' tersedia
+      group:
+        name: docker
+        state: present
+
+    - name: Menambahkan user "{{ ansible_user }}" ke dalam grup docker
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Mereset koneksi SSH agar perubahan grup user langsung aktif
+      meta: reset_connection

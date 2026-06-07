@@ -59,17 +59,17 @@ services:
           cpus: "0.2"
           memory: 128M
 
-  snmp-exporter:
-    image: prom/snmp-exporter:latest
-    container_name: snmp-exporter
-    restart: unless-stopped
-    volumes:
-      # Anda membutuhkan file snmp.yml untuk mapping OID Mikrotik
-      - ./snmp/snmp.yml:/etc/snmp_exporter/snmp.yml:ro
-    ports:
-      - "9116:9116"
-    networks:
-      - monitoring_net
+  # snmp-exporter:
+  #   image: prom/snmp-exporter:latest
+  #   container_name: snmp-exporter
+  #   restart: unless-stopped
+  #   volumes:
+  #     # Anda membutuhkan file snmp.yml untuk mapping OID Mikrotik
+  #     - ./snmp/snmp.yml:/etc/snmp_exporter/snmp.yml:ro
+  #   ports:
+  #     - "9116:9116"
+  #   networks:
+  #     - monitoring_net
 
   loki:
     image: grafana/loki:latest

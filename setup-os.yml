@@ -1,0 +1,83 @@
+---
+- name: Konfigurasi Dasar OS (Timezone, SSH, UFW, dan Fail2ban)
+  hosts: target_servers
+  become: yes
+  tasks:
+    - name: Mengatur Timezone ke Asia/Jakarta
+      timezone:
+        name: Asia/Jakarta
+
+    - name: Memastikan paket UFW dan Fail2ban terinstall
+      apt:
+        name: 
+          - ufw
+          - fail2ban
+        state: present
+        update_cache: yes
+
+    - name: Mengizinkan traffic masuk ke port SSH baru (10123)
+      ufw:
+        rule: allow
+        port: '10123'
+        proto: tcp
+
+    - name: Memblokir traffic masuk ke port SSH lama (22)
+      ufw:
+        rule: deny
+        port: '22'
+        proto: tcp
+
+    - name: Mengaktifkan UFW dan menetapkan default deny untuk incoming
+      ufw:
+        state: enabled
+        direction: incoming
+        policy: deny
+
+    - name: Mengubah port SSH menjadi 10123 di sshd_config
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?Port '
+        line: 'Port 10123'
+        validate: '/usr/sbin/sshd -t -f %s'
+      notify: 
+        - restart ssh
+
+    - name: Konfigurasi Fail2ban (jail.local) untuk proteksi SSH
+      copy:
+        dest: /etc/fail2ban/jail.local
+        content: |
+          [DEFAULT]
+          # Menggunakan UFW sebagai aksi pemblokiran
+          banaction = ufw
+          banaction_allports = ufw
+
+          [sshd]
+          enabled = true
+          port = 10123
+          filter = sshd
+          logpath = /var/log/auth.log
+          # Memblokir IP jika gagal login 3 kali dalam 10 menit (600 detik)
+          maxretry = 3
+          findtime = 600
+          # Waktu pemblokiran selama 1 jam (3600 detik)
+          bantime = 3600
+        mode: '0644'
+      notify:
+        - restart fail2ban
+
+    - name: Memastikan service Fail2ban berjalan dan enabled saat boot
+      systemd:
+        name: fail2ban
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: restart ssh
+      service:
+        name: sshd
+        state: restarted
+
+    - name: restart fail2ban
+      service:
+        name: fail2ban
+        state: restarted
